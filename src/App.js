@@ -31,7 +31,7 @@ export default class App extends React.Component {
     }
 
     handleReset() {
-        console.log("TODO: handleReset");
+        this.setState({ searchKeyword: "", searchResult: [], submitted: false })
     }
 
     render() {
@@ -45,6 +45,10 @@ export default class App extends React.Component {
                         onChange={(value) => this.handleChangeInput(value)}
                         onSubmit={() => this.search(searchKeyword)}
                         onReset={() => this.handleReset()} />
+
+                    <div className="content">
+                        {submitted && <SearchResult data={searchResult} />}
+                    </div>
                 </div>
             </>
         )
